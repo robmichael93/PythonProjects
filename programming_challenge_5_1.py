@@ -15,8 +15,14 @@ setup(width,height)
 setworldcoordinates(-2,-2,2,2)
 
 # assign radius
-radius = 0.4
-
+radius = 0.9
+pencolor(random.uniform(0.0, 1.0), random.uniform(0.0, 1.0), random.uniform(0.0, 1.0))
+penup()
+setpos(0, -radius)
+pendown()
+circle(radius, 360, 100)
+penup()
+home()
 # Acquire user input for number of sides
 number_of_sides = int(input("Enter the number of sides of a polygon: "))
 
@@ -31,23 +37,24 @@ while (number_of_sides>0):
         # Calculate theta
         theta = 360/number_of_sides
         # calculate side length
-        side_length = radius*math.cos(math.radians(theta/2.0))
+        side_length = 2*radius*math.sin(math.radians(theta/2.0))
         '''
         for starting position/angle references [Week 10] Lecture1 slide
         "Hint for advanced challenge: rcos(theta/2)"
         '''
         # position turtle and starting angle
-        start_x,start_y = 0, radius # -radius*math.cos(math.radians(theta/2.0))
+        start_x,start_y = radius*math.sin(math.radians(theta/2.0)), -radius*math.cos(math.radians(theta/2.0))
         penup()
         setpos(start_x,start_y)
-        right(theta/2.0)
+        #beta = 180*(number_of_sides - 1)/(2*number_of_sides)
         # Draw polygon by iterating through number of sides
         pendown()
         for _ in range(0, number_of_sides):
-            left(- theta)
+            left(theta)
             forward(side_length)
         penup()
-        left(theta/2.0)
+        home()
+        #left(theta/2.0)
 
     else:
         print("Polygon can be drawn with number of sides greater than 2")

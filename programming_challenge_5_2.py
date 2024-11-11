@@ -16,7 +16,13 @@ setworldcoordinates(-2,-2,2,2)
 
 # assign radius
 radius = 0.9
-
+pencolor(random.uniform(0.0, 1.0), random.uniform(0.0, 1.0), random.uniform(0.0, 1.0))
+penup()
+setpos(0, -radius)
+pendown()
+circle(radius, 360, 200)
+penup()
+home()
 # Acquire user input for number of sides
 number_of_sides = int(input("Enter the number of sides of a polygon: "))
 
